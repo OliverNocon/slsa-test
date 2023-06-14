@@ -30,6 +30,8 @@ jobs:
       # Step 1: Build your artifacts.
       #
       # ========================================================
+      - name: Setup Go environment
+        uses: actions/setup-go@v4.0.1
       - name: Build artifacts
         run: |
             go build -o slsa-test
