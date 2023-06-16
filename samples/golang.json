@@ -1,0 +1,253 @@
+{
+    "_type": "https://in-toto.io/Statement/v0.1",
+    "predicate": {
+        "buildConfig": {
+            "steps": [
+                {
+                    "command": [
+                        "/opt/hostedtoolcache/go/1.20.5/x64/bin/go",
+                        "mod",
+                        "vendor"
+                    ],
+                    "env": null,
+                    "workingDir": "/home/runner/work/slsa-test/slsa-test/__PROJECT_CHECKOUT_DIR__"
+                },
+                {
+                    "command": [
+                        "/opt/hostedtoolcache/go/1.20.5/x64/bin/go",
+                        "build",
+                        "-mod=vendor",
+                        "-trimpath",
+                        "-ldflags=-X main.Version=0.0.1 -X main.Commit=93fd9cf09b6e10ca9b86e439d4c106148f142173 -X main.CommitDate=1686829533 -X main.TreeState=clean",
+                        "-o",
+                        "binary-linux-amd64"
+                    ],
+                    "env": [
+                        "GOOS=linux",
+                        "GOARCH=amd64"
+                    ],
+                    "workingDir": "/home/runner/work/slsa-test/slsa-test/__PROJECT_CHECKOUT_DIR__"
+                }
+            ],
+            "version": 1
+        },
+        "buildType": "https://github.com/slsa-framework/slsa-github-generator/go@v1",
+        "builder": {
+            "id": "https://github.com/slsa-framework/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@refs/tags/v1.7.0"
+        },
+        "invocation": {
+            "configSource": {
+                "digest": {
+                    "sha1": "93fd9cf09b6e10ca9b86e439d4c106148f142173"
+                },
+                "entryPoint": ".github/workflows/slsa-goreleaser.yml",
+                "uri": "git+https://github.com/OliverNocon/slsa-test@refs/tags/v0.0.1"
+            },
+            "environment": {
+                "arch": "X64",
+                "github_actor": "OliverNocon",
+                "github_actor_id": "33484802",
+                "github_base_ref": "",
+                "github_event_name": "push",
+                "github_event_payload": {
+                    "after": "93fd9cf09b6e10ca9b86e439d4c106148f142173",
+                    "base_ref": "refs/heads/main",
+                    "before": "0000000000000000000000000000000000000000",
+                    "commits": [],
+                    "compare": "https://github.com/OliverNocon/slsa-test/compare/v0.0.1",
+                    "created": true,
+                    "deleted": false,
+                    "forced": false,
+                    "head_commit": {
+                        "author": {
+                            "email": "oliver.nocon@sap.com",
+                            "name": "Oliver Nocon",
+                            "username": "OliverNocon"
+                        },
+                        "committer": {
+                            "email": "oliver.nocon@sap.com",
+                            "name": "Oliver Nocon",
+                            "username": "OliverNocon"
+                        },
+                        "distinct": true,
+                        "id": "93fd9cf09b6e10ca9b86e439d4c106148f142173",
+                        "message": "fix: go version configuration",
+                        "timestamp": "2023-06-15T13:45:33+02:00",
+                        "tree_id": "b7419b3289e331484517471f4b30e8c250f34172",
+                        "url": "https://github.com/OliverNocon/slsa-test/commit/93fd9cf09b6e10ca9b86e439d4c106148f142173"
+                    },
+                    "pusher": {
+                        "email": "33484802+OliverNocon@users.noreply.github.com",
+                        "name": "OliverNocon"
+                    },
+                    "ref": "refs/tags/v0.0.1",
+                    "repository": {
+                        "allow_forking": true,
+                        "archive_url": "https://api.github.com/repos/OliverNocon/slsa-test/{archive_format}{/ref}",
+                        "archived": false,
+                        "assignees_url": "https://api.github.com/repos/OliverNocon/slsa-test/assignees{/user}",
+                        "blobs_url": "https://api.github.com/repos/OliverNocon/slsa-test/git/blobs{/sha}",
+                        "branches_url": "https://api.github.com/repos/OliverNocon/slsa-test/branches{/branch}",
+                        "clone_url": "https://github.com/OliverNocon/slsa-test.git",
+                        "collaborators_url": "https://api.github.com/repos/OliverNocon/slsa-test/collaborators{/collaborator}",
+                        "comments_url": "https://api.github.com/repos/OliverNocon/slsa-test/comments{/number}",
+                        "commits_url": "https://api.github.com/repos/OliverNocon/slsa-test/commits{/sha}",
+                        "compare_url": "https://api.github.com/repos/OliverNocon/slsa-test/compare/{base}...{head}",
+                        "contents_url": "https://api.github.com/repos/OliverNocon/slsa-test/contents/{+path}",
+                        "contributors_url": "https://api.github.com/repos/OliverNocon/slsa-test/contributors",
+                        "created_at": 1686753100,
+                        "default_branch": "main",
+                        "deployments_url": "https://api.github.com/repos/OliverNocon/slsa-test/deployments",
+                        "description": null,
+                        "disabled": false,
+                        "downloads_url": "https://api.github.com/repos/OliverNocon/slsa-test/downloads",
+                        "events_url": "https://api.github.com/repos/OliverNocon/slsa-test/events",
+                        "fork": false,
+                        "forks": 0,
+                        "forks_count": 0,
+                        "forks_url": "https://api.github.com/repos/OliverNocon/slsa-test/forks",
+                        "full_name": "OliverNocon/slsa-test",
+                        "git_commits_url": "https://api.github.com/repos/OliverNocon/slsa-test/git/commits{/sha}",
+                        "git_refs_url": "https://api.github.com/repos/OliverNocon/slsa-test/git/refs{/sha}",
+                        "git_tags_url": "https://api.github.com/repos/OliverNocon/slsa-test/git/tags{/sha}",
+                        "git_url": "git://github.com/OliverNocon/slsa-test.git",
+                        "has_discussions": false,
+                        "has_downloads": true,
+                        "has_issues": true,
+                        "has_pages": false,
+                        "has_projects": true,
+                        "has_wiki": false,
+                        "homepage": null,
+                        "hooks_url": "https://api.github.com/repos/OliverNocon/slsa-test/hooks",
+                        "html_url": "https://github.com/OliverNocon/slsa-test",
+                        "id": 653691743,
+                        "is_template": false,
+                        "issue_comment_url": "https://api.github.com/repos/OliverNocon/slsa-test/issues/comments{/number}",
+                        "issue_events_url": "https://api.github.com/repos/OliverNocon/slsa-test/issues/events{/number}",
+                        "issues_url": "https://api.github.com/repos/OliverNocon/slsa-test/issues{/number}",
+                        "keys_url": "https://api.github.com/repos/OliverNocon/slsa-test/keys{/key_id}",
+                        "labels_url": "https://api.github.com/repos/OliverNocon/slsa-test/labels{/name}",
+                        "language": "Go",
+                        "languages_url": "https://api.github.com/repos/OliverNocon/slsa-test/languages",
+                        "license": null,
+                        "master_branch": "main",
+                        "merges_url": "https://api.github.com/repos/OliverNocon/slsa-test/merges",
+                        "milestones_url": "https://api.github.com/repos/OliverNocon/slsa-test/milestones{/number}",
+                        "mirror_url": null,
+                        "name": "slsa-test",
+                        "node_id": "R_kgDOJvaLXw",
+                        "notifications_url": "https://api.github.com/repos/OliverNocon/slsa-test/notifications{?since,all,participating}",
+                        "open_issues": 0,
+                        "open_issues_count": 0,
+                        "owner": {
+                            "avatar_url": "https://avatars.githubusercontent.com/u/33484802?v=4",
+                            "email": "33484802+OliverNocon@users.noreply.github.com",
+                            "events_url": "https://api.github.com/users/OliverNocon/events{/privacy}",
+                            "followers_url": "https://api.github.com/users/OliverNocon/followers",
+                            "following_url": "https://api.github.com/users/OliverNocon/following{/other_user}",
+                            "gists_url": "https://api.github.com/users/OliverNocon/gists{/gist_id}",
+                            "gravatar_id": "",
+                            "html_url": "https://github.com/OliverNocon",
+                            "id": 33484802,
+                            "login": "OliverNocon",
+                            "name": "OliverNocon",
+                            "node_id": "MDQ6VXNlcjMzNDg0ODAy",
+                            "organizations_url": "https://api.github.com/users/OliverNocon/orgs",
+                            "received_events_url": "https://api.github.com/users/OliverNocon/received_events",
+                            "repos_url": "https://api.github.com/users/OliverNocon/repos",
+                            "site_admin": false,
+                            "starred_url": "https://api.github.com/users/OliverNocon/starred{/owner}{/repo}",
+                            "subscriptions_url": "https://api.github.com/users/OliverNocon/subscriptions",
+                            "type": "User",
+                            "url": "https://api.github.com/users/OliverNocon"
+                        },
+                        "private": true,
+                        "pulls_url": "https://api.github.com/repos/OliverNocon/slsa-test/pulls{/number}",
+                        "pushed_at": 1686829784,
+                        "releases_url": "https://api.github.com/repos/OliverNocon/slsa-test/releases{/id}",
+                        "size": 14,
+                        "ssh_url": "git@github.com:OliverNocon/slsa-test.git",
+                        "stargazers": 0,
+                        "stargazers_count": 0,
+                        "stargazers_url": "https://api.github.com/repos/OliverNocon/slsa-test/stargazers",
+                        "statuses_url": "https://api.github.com/repos/OliverNocon/slsa-test/statuses/{sha}",
+                        "subscribers_url": "https://api.github.com/repos/OliverNocon/slsa-test/subscribers",
+                        "subscription_url": "https://api.github.com/repos/OliverNocon/slsa-test/subscription",
+                        "svn_url": "https://github.com/OliverNocon/slsa-test",
+                        "tags_url": "https://api.github.com/repos/OliverNocon/slsa-test/tags",
+                        "teams_url": "https://api.github.com/repos/OliverNocon/slsa-test/teams",
+                        "topics": [],
+                        "trees_url": "https://api.github.com/repos/OliverNocon/slsa-test/git/trees{/sha}",
+                        "updated_at": "2023-06-15T11:24:31Z",
+                        "url": "https://github.com/OliverNocon/slsa-test",
+                        "visibility": "private",
+                        "watchers": 0,
+                        "watchers_count": 0,
+                        "web_commit_signoff_required": false
+                    },
+                    "sender": {
+                        "avatar_url": "https://avatars.githubusercontent.com/u/33484802?v=4",
+                        "events_url": "https://api.github.com/users/OliverNocon/events{/privacy}",
+                        "followers_url": "https://api.github.com/users/OliverNocon/followers",
+                        "following_url": "https://api.github.com/users/OliverNocon/following{/other_user}",
+                        "gists_url": "https://api.github.com/users/OliverNocon/gists{/gist_id}",
+                        "gravatar_id": "",
+                        "html_url": "https://github.com/OliverNocon",
+                        "id": 33484802,
+                        "login": "OliverNocon",
+                        "node_id": "MDQ6VXNlcjMzNDg0ODAy",
+                        "organizations_url": "https://api.github.com/users/OliverNocon/orgs",
+                        "received_events_url": "https://api.github.com/users/OliverNocon/received_events",
+                        "repos_url": "https://api.github.com/users/OliverNocon/repos",
+                        "site_admin": false,
+                        "starred_url": "https://api.github.com/users/OliverNocon/starred{/owner}{/repo}",
+                        "subscriptions_url": "https://api.github.com/users/OliverNocon/subscriptions",
+                        "type": "User",
+                        "url": "https://api.github.com/users/OliverNocon"
+                    }
+                },
+                "github_head_ref": "",
+                "github_ref": "refs/tags/v0.0.1",
+                "github_ref_type": "tag",
+                "github_repository_id": "653691743",
+                "github_repository_owner": "OliverNocon",
+                "github_repository_owner_id": "33484802",
+                "github_run_attempt": "1",
+                "github_run_id": "5278409963",
+                "github_run_number": "3",
+                "github_sha1": "93fd9cf09b6e10ca9b86e439d4c106148f142173",
+                "os": "ubuntu22"
+            },
+            "parameters": {}
+        },
+        "materials": [
+            {
+                "digest": {
+                    "sha1": "93fd9cf09b6e10ca9b86e439d4c106148f142173"
+                },
+                "uri": "git+https://github.com/OliverNocon/slsa-test@refs/tags/v0.0.1"
+            },
+            {
+                "uri": "https://github.com/actions/virtual-environments/releases/tag/ubuntu22/20230611.1"
+            }
+        ],
+        "metadata": {
+            "buildInvocationID": "5278409963-1",
+            "completeness": {
+                "environment": false,
+                "materials": false,
+                "parameters": true
+            },
+            "reproducible": false
+        }
+    },
+    "predicateType": "https://slsa.dev/provenance/v0.2",
+    "subject": [
+        {
+            "digest": {
+                "sha256": "687453f6a0df1f6788a1c40eabea53035213e8c1f261ba6c2defaf301825f391"
+            },
+            "name": "binary-linux-amd64"
+        }
+    ]
+}

@@ -11,8 +11,7 @@ import (
 )
 
 func main() {
-	fmt.Println("hello SLSA")
-	filename := "multiple.intoto.jsonl"
+	filename := "./samples/generic.intoto.jsonl"
 	f, err := os.ReadFile(filename)
 	if err != nil {
 		log.Fatal("failed to read file", err)
