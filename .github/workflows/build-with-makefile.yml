@@ -1,0 +1,85 @@
+name: Build with Makefile and SLSA Provenance
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build artifacts
+    runs-on: ubuntu-latest
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
+      artifact-name: ${{ steps.build.outputs.artifact-name }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+
+      - name: Build with Make
+        id: build
+        run: |
+          make build
+          DIGEST=$(sha256sum build/myapp | awk '{print $1}')
+          echo "digest=$DIGEST" >> "$GITHUB_OUTPUT"
+          echo "artifact-name=myapp" >> "$GITHUB_OUTPUT"
+          echo "Built artifact with digest: $DIGEST"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: myapp
+          path: build/myapp
+          if-no-files-found: error
+
+  provenance:
+    name: Generate SLSA provenance
+    needs: [build]
+    permissions:
+      actions: read
+      id-token: write
+      contents: write
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v1.10.0
+    with:
+      base64-subjects: "${{ needs.build.outputs.digest }}"
+      upload-assets: true
+      provenance-name: "myapp.intoto.jsonl"
+
+  release:
+    name: Create release
+    needs: [build, provenance]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: write
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: myapp
+
+      - name: Download provenance
+        uses: actions/download-artifact@v4
+        with:
+          name: myapp.intoto.jsonl
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            myapp
+            myapp.intoto.jsonl
+          draft: false
+          prerelease: false
+          generate_release_notes: true
