@@ -31,10 +31,8 @@ jobs:
         id: build
         run: |
           make build
-          DIGEST=$(sha256sum build/myapp | awk '{print $1}')
-          echo "digest=$DIGEST" >> "$GITHUB_OUTPUT"
-          echo "artifact-name=myapp" >> "$GITHUB_OUTPUT"
-          echo "Built artifact with digest: $DIGEST"
+          HASHES=$(sha256sum build/myapp | base64 -w0)
+          echo "hashes=$HASHES" >> "$GITHUB_OUTPUT"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -52,7 +50,7 @@ jobs:
       contents: write
     uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.1.0
     with:
-      base64-subjects: "${{ needs.build.outputs.digest }}"
+      base64-subjects: "${{ needs.build.outputs.hashes }}"
       upload-assets: true
       provenance-name: "myapp.intoto.jsonl"
 
