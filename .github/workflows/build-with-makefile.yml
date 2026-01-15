@@ -14,8 +14,7 @@ jobs:
     name: Build artifacts
     runs-on: ubuntu-latest
     outputs:
-      digest: ${{ steps.build.outputs.digest }}
-      artifact-name: ${{ steps.build.outputs.artifact-name }}
+      hashes: ${{ steps.build.outputs.hashes }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,6 +30,8 @@ jobs:
         id: build
         run: |
           make build
+          # Generate hash in sha256sum format: "<hash> <filename>"
+          # and base64 encode it for the SLSA generator
           HASHES=$(sha256sum build/myapp | base64 -w0)
           echo "hashes=$HASHES" >> "$GITHUB_OUTPUT"
 
